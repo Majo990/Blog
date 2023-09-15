@@ -9,23 +9,28 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+
+     //crea la tabla 
+    public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
+            $table->id();//integer Unsigned Increment
+            $table->string('name');//varchar
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('avatar');
             $table->rememberToken();
-            $table->timestamps();
+            $table->timestamps();//created_at updated_at
         });
     }
 
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+
+     //ELIMINA LA TABLA
+    public function down()
     {
         Schema::dropIfExists('users');
     }
